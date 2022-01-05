@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nick Hayashi's Site</title>
+  <meta name="description" content="the personal webpage of nick hayashi">
+  <meta name="author" content="nick hayashi">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+:root {
+  --base03: #002b36;
+  --base02: #073642;
+  --base01: #586e75;
+  --base00: #657b83;
+  --base0: #839496;
+  --base1: #93a1a1;
+  --base2: #eee8d5;
+  --base3: #fdf6e3;
+  --yellow: #b58900;
+  --orange: #cb4b16;
+  --red: #dc322f;
+  --magenta: #d33682;
+  --violet: #6c71c4;
+  --blue: #268bd2;
+  --cyan: #2aa198;
+  --green: #859900;
+
+  --nav-height: max(5vh, 3em);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+
+    background-color: var(--base03);
+}
+
+a, a:active, a:visited, code.url {
+    color: var(--yellow);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--yellow);
+}
+
+h3 {
+    width: 100%;
+    border-bottom: 1px solid var(--yellow);
+}
+
+body {
+    background-color: var(--base03);
+    color: var(--base0);
+}
+
+nav {
+    position: relative;
+    width: 100%;
+    height: var(--nav-height);
+
+    background-color: var(--base02);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tab input[type=radio] {
+    display: none;
+}
+
+.tabLabel {
+    border-bottom: 1px solid var(--base01);
+    padding: 0 10px 3px 10px;
+    margin: 0 10px;
+    user-select: none;
+}
+
+.tabLabel:hover {
+    cursor: pointer;
+}
+
+.tabContentContainer {
+    position: absolute;
+    top: var(--nav-height);
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: clip-path 1.6s ease-out;
+    clip-path: circle(0px at 50% 50%);
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 20px;
+}
+
+.tabContent section {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+iframe {
+    width: 400px;
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.tabContent p {
+    max-width: 800px;
+
+    line-height: 1.5;
+}
+
+.tabContent ul {
+    line-height: 1.5;
+}
+
+input[type=radio]:checked ~ label {
+    border-bottom: 1px solid var(--base0);
+    z-index: 2;
+}
+
+input[type=radio]:checked ~ label ~ .tabContentContainer {
+    opacity: 1;
+    clip-path: circle(200vmax at 50% var(--nav-neight)); // @TODO make a cool shape
+    z-index: 1;
+}
+</style>
+<body>
+  <nav>
+    <div class="tab">
+      <input type="radio" id="programming" name="tabs" checked />
+      <label class="tabLabel" for="programming">programming</label>
+
+      <div class="tabContentContainer">
+        <div class="tabContent">
+          <h2>Notable Projects</h2>
+          <a target="_blank" href="https://github.com/churchianity/">github page</a>
+          <section>
+            <h3>Board Game</h3>
+            <p>
+            'Board Game', which is a pseudonym, is a work-in-progress digital web-application-based implementation of an existing physical board game, for solo play, or 2-5 person online multiplayer. It is closed source. It consists of:
+            </p>
+            <ul>
+              <li>a front-end built using Angular13</li>
+              <li>a backend consisting of a Golang HTTP and Websocket Server which serves the main application, as well as performs game-related api tasks</li>
+              <li>a NodeJs microservice which handles user authentication and authorization</li>
+              <li>a MongoDB database which hosts static game data, as well as user data</li>
+              <li>a discord.js chat bot, which acts as a query interface to the MongoDB instance via message commands</li>
+            </ul>
+            <p>
+            The web application has features such as:
+            </p>
+            <ul>
+              <li>a separate-to-the-main-game simple search interface to query cards that exist in the board game by their relevant properties</li>
+              <li>replays, allowing completed games to be viewed again and arbitrarily scrubbed</li>
+              <li>post-game analysis via a few hand-implemented charts (no charting library, just manual geometry calculations and svg)</li>
+              <li>IndexedDB caching of static data (reducing # of network calls on refresh), and some user data, like replays, or current local single player game progress, enabling offline solo play</li>
+              <li>depends on less npm packages than the default initialized workspace of an Angular project, by manually auditing which we need and removing those deemed unnecessary</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Hexyz</h3>
+            <p>Hexyz is a work-in-progress, open source, tower defense game for Mac, Windows, Linux, and HTML5.<br>It's written using Lua, and the Amulet game engine. The game is single player, hexagonal-grid, with a few tower types and mob types, and scaling difficulty. The project began as an attempt to develop a library which could generate hexagonal grids, and perform common operations involving them such as:</p>
+            <ul>
+              <li>translating mouse coordinates to hex coordinate space and back</li>
+              <li>generating useful Perlin and Simplex noise maps over the grids for procedural terrain generation</li>
+              <li>pathfinding/searching via BFS, Dijkstra, and A*</li>
+            </ul>
+            <p>In testing the library, eventually something resembling a full game was born. It now supports:</p>
+            <ul>
+              <li>procedural levels</li>
+              <li>hand-drawn sprites</li>
+              <li>self-composed soundtrack, and sound-fx</li>
+              <li>single game save and load</li>
+              <li>seeded maps and randomness (playing the same map twice has the same enemy spawns, for example)</li>
+              <li>a primitve map editor</li>
+              <li>basic moddability (entities such as mobs and towers are largely stored as simple files which are easy to edit)</li>
+            </ul>
+            <a target="_blank" href="https://github.com/churchianity/hexyz">hexyz on github</a>
+          </section>
+          <section>
+            <h3>Clue</h3>
+            <p>Clue is a work-in-progress, open source, compiled or interpreted general purpose programming language for x64 hardware. It is implemented in C99 with a little bit of C++ on top (mostly for function overloading, and a small number of template classes). It has a minimal dependency philosophy, including as few libraries as possible, even from the C (and certainly C++) standard libraries. It's similar to, and has taken ideas from, the programming languages: C, C++, Java, Lua, Golang, Javascript, Nelua, Crystal, Python, and Jai.<br>Current key features/properties:</p>
+            <ul>
+              <li>fast compile times (~500,000 simple lines in about 4 seconds - compiler isn't complete, so not the best benchmark unfortunately, but it's something)</li>
+              <li>clear, simply-put, and insightful error messages</li>
+              <li>inobtrusive static typing (plenty of type-inference)</li>
+              <li>basic support for metaprogramming</li>
+              <li>a hand written bottom-up shift-reduce parser (no yacc)</li>
+            </ul>
+            <a target="_blank" href="https://github.com/churchianity/clue">Clue on github</a>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="music" name="tabs" />
+      <label class="tabLabel" for="music">music</label>
+
+      <div class="tabContentContainer">
+        <div class="tabContent">
+          <h2>Summary of Work</h2>
+          <section>
+            <p>
+	    Two albums of about 40 minutes in length each were released for free on bandcamp in the years 2015, 2016 respectively.<br>Physical copies were not made.
+            </p>
+            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=175429436/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://nickhayashi.bandcamp.com/album/ai">ai by Nick Hayashi</a></iframe>
+            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1987735548/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://nickhayashi.bandcamp.com/album/charter">charter by Nick Hayashi</a></iframe>
+          </section>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <!--
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+  -->
+</body>
+</html>
