@@ -31,7 +31,7 @@ int main(void) {
 	// close the file
 	fclose(fp);
 
-	// 
+	// set up the web server
 	struct sockaddr_in server_addr, client_addr;
 	socklen_t sin_len = sizeof (client_addr);
 	int fd_server, fd_client;
