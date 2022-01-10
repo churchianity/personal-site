@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 #include <sys/types.h>
 #include <sys/socket.h>
-
 #include <netinet/in.h>
 #include <netdb.h>
 #include <arpa/inet.h>
@@ -12,35 +10,111 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int main(void) {
-	FILE* fp = fopen("index.html", "rb");
+char* file_paths[] = {
+	"index.html",
+
+	"hexyz/index.html",
+	"hexyz/amulet.js",
+	"hexyz/amulet.wasm",
+	"hexyz/data.pak",
+	"hexyz/amulet_license.txt",
+};
+#define FILEPATH_LENGTH(array) (sizeof(array)/sizeof(array[0]))
+#define FPL FILEPATH_LENGTH(file_paths)
+char* file_contents[FPL];
+int file_lengths[FPL];
+
+char* load_file_and_cache_size(int i) {
+	FILE* fp = fopen(file_paths[i], "rb");
 
 	if (fp == NULL) {
+		printf("failed to load %s\n", file_paths[i]);
+		exit(1);
 	}
 
-	// get the file's size in bytes so we know how much memory to allocate
 	fseek(fp, 0, SEEK_END);
-	int html_size = ftell(fp);
+	int size = ftell(fp);
 	fseek(fp, 0L, SEEK_SET);
 
-	// allocate space for the file's data, fill the buffer with fread, null terminate it
-	char* html = malloc(html_size + 1);
-	fread(html, sizeof (char), html_size + 1, fp);
-	html[html_size] = '\0';
+	char* buffer = malloc(size + 1);
+	fread(buffer, sizeof (char), size + 1, fp);
+	buffer[size] = '\0';
 
-	// close the file
+	file_lengths[i] = size;
+
 	fclose(fp);
 
-	// set up the web server
+	return buffer;
+}
+
+void load_servable_file_contents() {
+	for (int i = 0; i < FPL; i++) {
+		file_contents[i] = load_file_and_cache_size(i);
+	}
+}
+
+// we only care about the path and maybe method
+char* parse_http(char* buffer, int size) {
+	// METHOD PATH HTTP-VERSION
+	int i = 0;
+
+	char* cursor = buffer;
+	char* method = cursor;
+	int method_length = 0;
+	for (; i < size; i++) {
+		if (buffer[i] == ' ') {
+			while (buffer[++i] == ' ') {}
+			break;		
+		}
+		
+		method_length++;
+	}
+
+	cursor = buffer + i;
+	char* path = cursor;
+	int path_length = 0;
+	for (; i < size; i++) {
+		if (buffer[i] == ' ') {
+			while (buffer[++i] == ' ') {}
+			break;		
+		}
+		
+		path_length++;
+	}
+
+	if (method_length == 3 && (strncmp(method, "GET", 3) == 0)) {
+		char* string = malloc(sizeof(char) * (path_length - 1));
+
+		if (path[0] == '/') {
+			if (path_length == 1) {
+				return "index.html";
+
+			} else {
+				memcpy(string, path + 1, path_length - 1);
+				string[path_length - 1] = '\0';
+			}
+		} else {
+			return NULL;
+		}
+
+		return string;
+	}
+
+	return NULL;
+}
+
+int main(void) {
+	load_servable_file_contents();
+
 	struct sockaddr_in server_addr, client_addr;
 	socklen_t sin_len = sizeof (client_addr);
 	int fd_server, fd_client;
 	char buffer[2048];
 	int on = 1;
 
-	// in linux, Berkeley Sockets are just integers, and are treated similarly to file descriptors
 	fd_server = socket(AF_INET, SOCK_STREAM, 0);
 	if (fd_server < 0) {
+		printf("failed to create socket\n");
 		exit(1);
 	}
 
@@ -50,11 +124,13 @@ int main(void) {
 	server_addr.sin_port = htons(80);
 
 	if (bind(fd_server, (struct sockaddr*) &server_addr, sizeof (server_addr)) == -1) {
+		printf("failed to bind to server to server_addr\n");
 		close(fd_server);
 		exit(1);
 	}
 
 	if (listen(fd_server, 10) == -1) {
+		printf("failed to listen to server\n");
 		close(fd_server);
 		exit(1);
 	}
@@ -75,7 +151,19 @@ int main(void) {
 			read(fd_client, buffer, 2047); // leaving room for NULL terminator
 			// at this point, the buffer should contain a client request (or a chunk of it)
 			
-			write(fd_client, html, html_size - 1);
+			char* path = parse_http(buffer, 2048);
+
+
+			if (path != NULL) {
+				for (int i = 0; i < FPL; i++) {
+					if (strcmp(path, file_paths[i]) == 0) {
+						printf("|%s|\n", file_paths[i]);
+						write(fd_client, file_contents[i], file_lengths[i]);
+						break;
+					}
+				}
+
+			}
 		}
 		// parent process
 		close(fd_client);
