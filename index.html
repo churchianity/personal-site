@@ -235,8 +235,9 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
 
       <div class="tabContentContainer">
         <div class="tabContent">
+          <a target="_blank" href="https://github.com/churchianity/">Github</a>
+
           <h2>Notable Projects</h2>
-          <a target="_blank" href="https://github.com/churchianity/">github page</a>
           <section>
             <h3>Board Game</h3>
             <p>
@@ -257,11 +258,13 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li>replays, allowing completed games to be viewed again and arbitrarily scrubbed</li>
               <li>post-game analysis via a few hand-implemented charts (no charting library, just manual geometry calculations and svg)</li>
               <li>IndexedDB caching of static data (reducing # of network calls on refresh), and some user data, like replays, or current local single player game progress, enabling offline solo play</li>
+	      <li>PWA - uses web workers to enable offline usage</li>
               <li>depends on less npm packages than the default initialized workspace of an Angular project, by manually auditing which we need and removing those deemed unnecessary</li>
             </ul>
           </section>
           <section>
             <h3>Hexyz</h3>
+	    <a target="_blank" href="/hexyz/index.html">Play In Browser</a>
             <p>Hexyz is a work-in-progress, open source, tower defense game for Mac, Windows, Linux, and HTML5.<br>It's written using Lua, and the Amulet game engine. The game is single player, hexagonal-grid, with a few tower types and mob types, and scaling difficulty. The project began as an attempt to develop a library which could generate hexagonal grids, and perform common operations involving them such as:</p>
             <ul>
               <li>translating mouse coordinates to hex coordinate space and back</li>
@@ -278,7 +281,6 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li>a primitve map editor</li>
               <li>basic moddability (entities such as mobs and towers are largely stored as simple files which are easy to edit)</li>
             </ul>
-	    <a target="_blank" href="/hexyz/index.html">Play In Browser</a>
 	    <br>
             <a target="_blank" href="https://github.com/churchianity/hexyz">hexyz on github</a>
           </section>
@@ -294,6 +296,13 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
             </ul>
             <a target="_blank" href="https://github.com/churchianity/clue">Clue on github</a>
           </section>
+	  <section>
+	    <h3>This Website and the Webserver Providing It</h3>
+	    <p>This page contains no internal Javascript, just those requested by embeds. It's written using a fairly minimal subset of html and css features, in a very ad-hoc way. 
+	    </p>
+	    <p>The webserver providing these files is a microscopic home-rolled server implemented in pure C using raw Berkeley Sockets (the Linux implementation of them, anyway). It serves a small number of files, and probably isn't secure. It's ad-hoc in its approach. It is not meant to be robust or future-proof, just the simplest and quickest to implement webserver that performs the task at hand, where all of the relevant code is easily browseable. An Express NodeJS based webserver would've been fewer lines of code on the surface, but would've required an npm installation, and a package which wraps another library which itself implements Berekely Sockets anyway.
+	    </p>
+	  </section>
         </div>
       </div>
     </div>
