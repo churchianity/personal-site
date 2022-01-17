@@ -282,7 +282,7 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li>basic moddability (entities such as mobs and towers are largely stored as simple files which are easy to edit)</li>
             </ul>
 	    <br>
-            <a target="_blank" href="https://github.com/churchianity/hexyz">hexyz on github</a>
+            <a target="_blank" href="https://github.com/churchianity/hexyz">hexyz on Github</a>
           </section>
           <section>
             <h3>Clue</h3>
@@ -294,14 +294,19 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li>basic support for metaprogramming</li>
               <li>a hand written bottom-up shift-reduce parser (no yacc)</li>
             </ul>
-            <a target="_blank" href="https://github.com/churchianity/clue">Clue on github</a>
+            <a target="_blank" href="https://github.com/churchianity/clue">Clue on Github</a>
           </section>
 	  <section>
 	    <h3>This Website and the Webserver Providing It</h3>
+
 	    <p>This page contains no internal Javascript, just those requested by embeds. It's written using a fairly minimal subset of html and css features, in a very ad-hoc way. 
 	    </p>
-	    <p>The webserver providing these files is a microscopic home-rolled server implemented in pure C using raw Berkeley Sockets (the Linux implementation of them, anyway). It serves a small number of files, and probably isn't secure. It's ad-hoc in its approach. It is not meant to be robust or future-proof, just the simplest and quickest to implement webserver that performs the task at hand, where all of the relevant code is easily browseable. An Express NodeJS based webserver would've been fewer lines of code on the surface, but would've required an npm installation, and a package which wraps another library which itself implements Berekely Sockets anyway.
+	    <p>The webserver providing these files is a microscopic home-rolled server implemented in pure C using raw Berkeley Sockets (the Linux implementation of them, anyway). It serves a small number of files, and probably isn't secure. It's ad-hoc in its approach. It is not meant to be robust or future-proof, just the simplest and quickest to implement webserver that performs the task at hand, where all of the relevant code (not controlled by the underlying operating system) is easily browseable.
 	    </p>
+	    <p>
+	      Both the website and the webserver providing it are open source.
+	    </p>
+            <a target="_blank" href="https://github.com/churchianity/personal-site">this site on Github</a>
 	  </section>
         </div>
       </div>
