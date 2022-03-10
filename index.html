@@ -258,13 +258,13 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li>replays, allowing completed games to be viewed again and arbitrarily scrubbed</li>
               <li>post-game analysis via a few hand-implemented charts (no charting library, just manual geometry calculations and svg)</li>
               <li>IndexedDB caching of static data (reducing # of network calls on refresh), and some user data, like replays, or current local single player game progress, enabling offline solo play</li>
-	      <li>PWA - uses web workers to enable offline usage</li>
+        <li>PWA - uses web workers to enable offline usage</li>
               <li>depends on less npm packages than the default initialized workspace of an Angular project, by manually auditing which we need and removing those deemed unnecessary</li>
             </ul>
           </section>
           <section>
             <h3>Hexyz</h3>
-	    <a target="_blank" href="/hexyz/index.html">Play In Browser</a>
+      <a target="_blank" href="/hexyz/index.html">Play In Browser</a>
             <p>Hexyz is a work-in-progress, open source, tower defense game for Mac, Windows, Linux, and HTML5.<br>It's written using Lua, and the Amulet game engine. The game is single player, hexagonal-grid, with a few tower types and mob types, and scaling difficulty. The project began as an attempt to develop a library which could generate hexagonal grids, and perform common operations involving them such as:</p>
             <ul>
               <li>translating mouse coordinates to hex coordinate space and back</li>
@@ -281,7 +281,7 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li>a primitve map editor</li>
               <li>basic moddability (entities such as mobs and towers are largely stored as simple files which are easy to edit)</li>
             </ul>
-	    <br>
+      <br>
             <a target="_blank" href="https://github.com/churchianity/hexyz">hexyz on Github</a>
           </section>
           <section>
@@ -296,18 +296,18 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
             </ul>
             <a target="_blank" href="https://github.com/churchianity/clue">Clue on Github</a>
           </section>
-	  <section>
-	    <h3>This Website and the Webserver Providing It</h3>
+    <section>
+      <h3>This Website and the Webserver Providing It</h3>
 
-	    <p>This page contains no internal Javascript, just those requested by embeds. It's written using a fairly minimal subset of html and css features, in a very ad-hoc way. 
-	    </p>
-	    <p>The webserver providing these files is a microscopic home-rolled server implemented in pure C using raw Berkeley Sockets (the Linux implementation of them, anyway). It serves a small number of files, and probably isn't secure. It's ad-hoc in its approach. It is not meant to be robust or future-proof, just the simplest and quickest to implement webserver that performs the task at hand, where all of the relevant code (not controlled by the underlying operating system) is easily browseable.
-	    </p>
-	    <p>
-	      Both the website and the webserver providing it are open source.
-	    </p>
-            <a target="_blank" href="https://github.com/churchianity/personal-site">this site on Github</a>
-	  </section>
+      <p>This page almost got away with having no Javascript, but instead it ended up with just very little, besides those requested by embeds. It's written using a fairly minimal subset of html and css features, in a very ad-hoc way.
+      </p>
+      <p>The webserver providing these files is a microscopic home-rolled server implemented in pure C using raw Berkeley Sockets (the Linux implementation of them, anyway). It serves a small-medium number of files, and probably isn't secure.
+      </p>
+      <p>
+        Both the website and the webserver providing it are open source.
+      </p>
+      <a target="_blank" href="https://github.com/churchianity/personal-site">this site on Github</a>
+    </section>
         </div>
       </div>
     </div>
@@ -320,10 +320,64 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
           <h2>Summary of Work</h2>
           <section>
             <p>
-	    Two albums of about 40 minutes in length each were released for free on bandcamp in the years 2015, 2016 respectively.<br>Physical copies were not made.
+      Two albums of about 40 minutes in length each were released for free on bandcamp in the years 2015, 2016 respectively.<br>Physical copies were not made.
             </p>
             <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=175429436/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://nickhayashi.bandcamp.com/album/ai">ai by Nick Hayashi</a></iframe>
             <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1987735548/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://nickhayashi.bandcamp.com/album/charter">charter by Nick Hayashi</a></iframe>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="resources" name="tabs" />
+      <label class="tabLabel" for="resources">resources</label>
+
+      <div class="tabContentContainer">
+        <div class="tabContent">
+          <h2>Resources</h2>
+          <p>
+            This is a list of internet resources, sorted roughly by type, which I've found useful or interesting for various purposes.
+          </p>
+          <section>
+            <h3>electroacoustics / sound / music</h3>
+            <ul>
+
+            <ul>
+
+            <h3>programming</h3>
+            <ul>
+
+            <ul>
+
+            <h3>philosophy</h3>
+            <ul>
+
+            <ul>
+
+            <h3>favourite wikipedia articles</h3>
+            <ul>
+
+            <ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="contact" name="tabs" />
+      <label class="tabLabel" for="contact">contact</label>
+
+      <div class="tabContentContainer">
+        <div class="tabContent">
+          <h2>Contact</h2>
+          <section>
+            <p>
+              <button
+                onclick="getElementById('contactEmail').innerHTML = atob('aGF5YXNoaS5uaWNob2xhc0BnbWFpbC5jb20K');"
+              >
+                Show Email:
+              </button>
+              <span id="contactEmail" class="contactEmail">aGF5YXNoaS5uaWNob2xhc0BnbWFpbC5jb20K</span>
+            </p>
           </section>
         </div>
       </div>
