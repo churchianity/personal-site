@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -64,9 +65,9 @@ char* parse_http(char* buffer, int size) {
 	for (; i < size; i++) {
 		if (buffer[i] == ' ') {
 			while (buffer[++i] == ' ') {}
-			break;		
+			break;
 		}
-		
+
 		method_length++;
 	}
 
@@ -76,9 +77,9 @@ char* parse_http(char* buffer, int size) {
 	for (; i < size; i++) {
 		if (buffer[i] == ' ') {
 			while (buffer[++i] == ' ') {}
-			break;		
+			break;
 		}
-		
+
 		path_length++;
 	}
 
@@ -87,7 +88,9 @@ char* parse_http(char* buffer, int size) {
 
 		if (path[0] == '/') {
 			if (path_length == 1) {
-				return "index.html";
+				char* index = malloc(sizeof("index.html\0"));
+				memcpy(index, "index.html\0", sizeof("index.html\0"));
+				return index;
 
 			} else {
 				memcpy(string, path + 1, path_length - 1);
@@ -150,7 +153,7 @@ int main(void) {
 			memset(buffer, 0, 2048);
 			read(fd_client, buffer, 2047); // leaving room for NULL terminator
 			// at this point, the buffer should contain a client request (or a chunk of it)
-			
+
 			char* path = parse_http(buffer, 2048);
 
 
@@ -162,7 +165,7 @@ int main(void) {
 						break;
 					}
 				}
-
+				free(path);
 			}
 		}
 		// parent process
