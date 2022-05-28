@@ -26,15 +26,15 @@
   --cyan: #2aa198;
   --green: #859900;
 
-  --nav-height: max(5vh, 3em);
+  --nav-height: 3em;
 }
 
 html {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
 
     background-color: var(--base03);
@@ -132,6 +132,20 @@ iframe {
 
 .tabContent ul {
     line-height: 1.5;
+    width: 100%;
+    max-width: 800px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tabContent a {
+    display: inline-block;
+    max-width: 800px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 input[type=radio]:checked ~ label {
@@ -163,8 +177,7 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
             </p>
             <ul>
               <li>a front-end built using Angular13</li>
-              <li>a backend consisting of a Golang HTTP and Websocket Server which serves the main application, as well as performs game-related api tasks</li>
-              <li>a NodeJs microservice which handles user authentication and authorization</li>
+              <li>a backend consisting of a Golang HTTP and Websocket Server which serves the main application, and is the api for the app.</li>
               <li>a MongoDB database which hosts static game data, as well as user data</li>
               <li>a discord.js chat bot, which acts as a query interface to the MongoDB instance via message commands</li>
             </ul>
@@ -222,9 +235,9 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
     <section>
       <h3>This Website and the Webserver Providing It</h3>
 
-      <p>This page almost got away with having no Javascript, but instead it ended up with just very little, besides those requested by embeds. It's written using a fairly minimal subset of html and css features, in a very ad-hoc way.
+      <p>This page almost got away with having no Javascript, but instead it ended up with just very little, besides those requested by embeds. It's written using a fairly minimal subset of html and css features.
       </p>
-      <p>The webserver providing these files is a microscopic home-rolled server implemented in pure C using raw Berkeley Sockets (the Linux implementation of them, anyway). It serves a small-medium number of files, and probably isn't secure.
+      <p>The webserver providing these files is a microscopic server implemented in C using Berkeley Sockets. It serves a small number of resources, and probably isn't secure.
       </p>
       <p>
         Both the website and the webserver providing it are open source.
@@ -264,50 +277,35 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
           <section>
             <h3>electroacoustics / sound / music</h3>
             <ul>
-              <li><a target="_blank" href="https://www.soundonsound.com/sound-advice/rackmounting-your-pc">Rackmounting Your PC |</a></li>
-              <li><a target="_blank" href="https://votsband.bandcamp.com/album/a-tessitura-of-transfiguration">A Tessitura of Transfiguration | Victory Over The Sun</a></li>
-              <li><a target="_blank" href="https://www.svsound.com/blogs/svs/74790851-the-art-of-speaker-placement">The Art of Speaker Placement | SVS</a></li>
+              <li><a target="_blank" href="http://nerdgirls.poemproducer.com/">2014 - NERDGIRLS - herstory of electronic music</a></li>
               <li><a target="_blank" href="http://sites.music.columbia.edu/cmc/MusicAndComputers/">Music and Computers</a></li>
-              <li><a target="_blank" href="http://sonoloco.com/rev/stockhausen/kontaktequestions.html">Stockhausen responding to questions about "Kontakte" in Stockholm 12th May 2001</a></li>
-              <li><a target="_blank" href="http://www.dmu.uem.br/aulas/tecnologia/SolObjSon/HTMLs/Tartyp.html">Pierre Schaeffer's Typology of Sound Objects</a></li>
-              <li><a target="_blank" href="http://stockhausenspace.blogspot.com/">Stockhausen: Sounds in Space</a></li>
               <li><a target="_blank" href="https://www.youtube.com/watch?v=7xyGtI7KKIY">Karlheinz Stockhausen Lecture</a></li>
-              <li><a target="_blank" href="http://cylinders.library.ucsb.edu/">Index | UCSB Cylinder Audio Archive</a></li>
-              <li><a target="_blank" href="https://www.amazon.com/Computer-Music-Tutorial-MIT-Press/dp/0262680823">The Computer Music Tutorial (The MIT Press): Curtis Roads: 8601405018892: Amazon.com: Books</a></li>
-              <li><a target="_blank" href="https://econtact.ca/11_2/tsabary_training.html">CEC — eContact! 11.2 — Aural Training for Electroacoustics at Concordia University</a></li>
-              <li><a target="_blank" href="http://stanford.edu/~mishel/CS448B/PositionalDrumNotation_Report.pdf">Positional Drum Notation - paper 3.docx</a></li>
-              <li><a target="_blank" href="https://www.youtube.com/watch?v=6KQ9se5PHQg">Visiting Willem Twee Studios - a modern early electronic music studio - YouTube</a></li>
-              <li><a target="_blank" href="https://gittlerinstruments.com/blog-2">Blog | Gittler Instruments, LLC</a></li>
-              <li><a target="_blank" href="https://www.gearslutz.com/board/music-computers/1248892-mac-vs-windows-real-time-audio-performance.html">Mac vs Windows - Real time audio performance - Gearslutz</a></li>
+              <li><a target="_blank" href="https://www.gearslutz.com/board/music-computers/1248892-mac-vs-windows-real-time-audio-performance.html">Mac vs Windows - Real time audio performance</a></li>
               <li><a target="_blank" href="https://econtact.ca/15_3/victoria.html">CEC — eContact! 15.3 — CEC 25th Anniversary Tour in Victoria: University of Victoria School of Music</a></li>
+              <li><a target="_blank" href="https://econtact.ca/11_2/tsabary_training.html">CEC — eContact! 11.2 — Aural Training for Electroacoustics at Concordia University</a></li>
               <li><a target="_blank" href="http://www.moz.ac.at/sem/lehre/lib/pd-sounddesign/acoustics.html">The Physics of Bells</a></li>
-              <li><a target="_blank" href="https://www.quora.com/What-is-the-audio-frequency-range-of-FM-radio?share=1">What is the audio frequency range of FM radio? - Quora</a></li>
-              <li><a target="_blank" href="https://tonedear.com/ear-training/absolute-perfect-pitch-test">Perfect Pitch Ear Training Test</a></li>
-              <li><a target="_blank" href="https://arxiv.org/pdf/2005.00341.pdf">Jukebox: A Generative Model for Music</a></li>
-              <li><a target="_blank" href="https://www.programmingformusicians.com/">Matkat Music – Musical Tools for Everyone</a></li>
-            </ul>
-          </section>
-          <section>
-            <h3>programming</h3>
-            <ul>
-
-            </ul>
-          </section>
-          <section>
-            <h3>philosophy</h3>
-            <ul>
-
+              <li><a target="_blank" href="http://cylinders.library.ucsb.edu/">Index | UCSB Cylinder Audio Archive</a></li>
+              <li><a target="_blank" href="http://sonoloco.com/rev/stockhausen/kontaktequestions.html">Stockhausen responding to questions about "Kontakte" in Stockholm 12th May 2001</a></li>
+              <li><a target="_blank" href="http://stanford.edu/~mishel/CS448B/PositionalDrumNotation_Report.pdf">Positional Drum Notation</a></li>
             </ul>
           </section>
 
           <!--
           <section>
-            <h3>favourite wikipedia articles</h3>
+            <h3>programming</h3>
+            <p>TODO. This list will be long, and perhaps unmaintainable....</p>
             <ul>
-              <li><a href="https://en.wikipedia.org/wiki/ISO/IEC_7810" target="_blank">ISO/IEC 7810 - Wikipedia</a></li>
+
+            </ul>
+          </section>
+          -->
+
+          <section>
+            <h3>wikipedia articles</h3>
+            <ul>
+              <li><a href="https://en.wikipedia.org/wiki/Sakshi_(Witness)" target="_blank">Sakshi (Witness) - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Oblique_Strategies" target="_blank">Oblique Strategies - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Lopadotemachoselachogaleokranioleipsanodrimhypotrimmatosilphioparaomelitokatakechymenokichlepikossyphophattoperisteralektryonoptekephalliokigklopeleiolagoiosiraiobaphetraganopterygon" target="_blank">Lopadotemachoselachogaleokranioleipsanodrimhypotrimmatosilphioparaomelitokatakechymenokichlepikossyphophattoperisteralektryonoptekephalliokigklopeleiolagoiosiraiobaphetraganopterygon - Wikipedia</a></li>
-              <li><a href="https://de.wikipedia.org/wiki/Acephale_(Volk)" target="_blank">Acephale (Volk) – Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Anthropic_principle" target="_blank">Anthropic principle - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Lojban" target="_blank">Lojban - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Linguistic_relativity" target="_blank">Linguistic relativity - Wikipedia</a></li>
@@ -316,15 +314,11 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li><a href="https://en.wikipedia.org/wiki/Side-blotched_lizard" target="_blank">Side-blotched lizard - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis" target="_blank">Church–Turing thesis - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Bogosort" target="_blank">Bogosort - Wikipedia</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/Kaleidoscope" target="_blank">Kaleidoscope - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Eigengrau" target="_blank">Eigengrau - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Regular_language" target="_blank">Regular language - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Symbol_grounding_problem" target="_blank">Symbol grounding problem - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Faux_Cyrillic" target="_blank">Faux Cyrillic - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Tiger_beetle" target="_blank">Tiger beetle - Wikipedia</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/Bioindicator" target="_blank">Bioindicator - Wikipedia</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/%C3%81sbyrgi" target="_blank">Ásbyrgi - Wikipedia</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/J%C3%B6kulhlaup" target="_blank">Jökulhlaup - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Mental_rotation" target="_blank">Mental rotation - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Weaire%E2%80%93Phelan_structure" target="_blank">Weaire–Phelan structure - Wikipedia</a></li>
               <li><a href="https://en.wikipedia.org/wiki/Canadian_Electroacoustic_Community" target="_blank">Canadian Electroacoustic Community - Wikipedia</a></li>
@@ -359,7 +353,40 @@ input[type=radio]:checked ~ label ~ .tabContentContainer {
               <li><a href="https://en.wikipedia.org/wiki/Recursive_islands_and_lakes" target="_blank">Recursive islands and lakes - Wikipedia</a></li>
             </ul>
           </section>
-          -->
+
+          <section>
+            <h3>philosophy and miscellaneous</h3>
+            <ul>
+              <li><a href="http://www.zpub.com/notes/idle.html" target="_blank">In Praise of Idleness By Bertrand Russell</a></li>
+              <li><a href="http://music.arts.uci.edu/dobrian/CD.music.ai.htm" target="_blank">Music and Artificial Intelligence</a></li>
+              <li><a href="https://artmetropole.com/events/any-surplus-is-immoral-artist-books-and-multiples-by-jenny-holze" target="_blank">Art Metropole / ANY SURPLUS IS IMMORAL</a></li>
+              <li><a href="http://www.nonoise.org/library/smj/smj.htm" target="_blank">Noise Pollution: A Modern Plague</a></li>
+              <li><a href="http://www.jimpryor.net/teaching/courses/intro/kagan/hedonism.html" target="_blank">www.jimpryor.net/teaching/courses/intro/kagan/hedonism.html</a></li>
+              <li><a href="http://socks-studio.com/2016/11/04/120-variations-on-the-platonic-solids-perspectiva-corporum-regularium-by-wenzel-jamnitzer/" target="_blank">120 Variations on the Platonic Solids: ‘Perspectiva Corporum Regularium‘ by Wenzel Jamnitzer – SOCKS</a></li>
+              <li><a href="https://www.fanfiction.net/s/5782108/2/Harry-Potter-and-the-Methods-of-Rationality" target="_blank">Harry Potter and the Methods of Rationality Chapter 2: Everything I Believe Is False, a harry potter fanfic | FanFiction</a></li>
+              <li><a href="http://cse.unl.edu/~choueiry/S11-235/files/BookOfProof.pdf" target="_blank">BookOfProof.pdf</a></li>
+              <li><a href="https://www.maa.org/sites/default/files/pdf/devlin/LockhartsLament.pdf" target="_blank">LockhartsLament.doc</a></li>
+              <li><a href="https://link.springer.com/content/pdf/10.3758/BF03206455.pdf" target="_blank">How a cognitive psychologist came to seek universal laws</a></li>
+              <li><a href="https://www.nature.com/articles/s41586-019-1352-7" target="_blank">Whole-animal connectomes of both Caenorhabditis elegans sexes | Nature</a></li>
+              <li><a href="https://archive.org/details/texts" target="_blank">Free Books : Download & Streaming : eBooks and Texts : Internet Archive</a></li>
+              <li><a href="https://mostlyeconomics.wordpress.com/2017/01/18/thinking-about-appropriate-size-of-currency-notes/" target="_blank">Thinking about appropriate size of currency notes… | Mostly Economics</a></li>
+              <li><a href="https://www.radiomuseum.org/" target="_blank">Antique Radios, 300 661 Antique Radios listed</a></li>
+              <li><a href="http://xowa.org/" target="_blank">Main Page - XOWA</a></li>
+              <li><a href="http://www.angelsghosts.com/spiricom" target="_blank">What was the Spiricom?</a></li>
+              <li><a href="http://redgreenrepeat.com/2019/07/12/tips-i-got-from-emotional-intelligence-2-0/" target="_blank">Tips I got from Emotional Intelligence 2.0 · Red Green Repeat</a></li>
+              <li><a href="http://redgreenrepeat.com/2019/07/19/debrief-emotional-intelligence/" target="_blank">Debrief: Emotional Intelligence · Red Green Repeat</a></li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6284002/" target="_blank">The Biological Basis of Mathematical Beauty</a></li>
+              <li><a href="https://www.nytimes.com/interactive/2019/climate/sustainable-clothing.html" target="_blank">How to Buy Clothes That Are Built to Last - The New York Times</a></li>
+              <li><a href="http://www.fotuva.org/feynman/what_is_science.html" target="_blank">What Is Science?</a></li>
+              <li><a href="http://www.dartmouth.edu/~matc/MathDrama/reading/Wigner.html" target="_blank">The Unreasonable Effectiveness of Mathematics in the Natural Sciences</a></li>
+              <li><a href="http://www.dartmouth.edu/~matc/MathDrama/reading/Hamming.html" target="_blank">The Unreasonable Effectiveness of Mathematics in the Natural Sciences</a></li>
+              <li><a href="https://www.simulation-argument.com/simulation.pdf" target="_blank">Are You Living in a Computer Simulation?</a></li>
+              <li><a href="https://www.tandfonline.com/doi/abs/10.1080/09608788.2002.10383078?journalCode=rbjh20" target="_blank">The Cartesian refutation of idealism: British Journal for the History of Philosophy: Vol 10, No 4</a></li>
+              <li><a href="https://chem.tufts.edu/science/Shermer/E-Skeptic/SkepticsOnWolfram.html#:~:text=Stephen%20Wolfram%20was%20a%20child,in%20physics%20and%20computer%20science" target="_blank">SKEPTICS ON STEPHEN WOLFRAM</a></li>
+              <li><a href="https://www.sciencedirect.com/science/article/pii/S0079610718300798" target="_blank">Cause of Cambrian Explosion - Terrestrial or Cosmic? - ScienceDirect</a></li>
+              <li><a href="https://laurencetennant.com/bonds/adhominem.html" target="_blank">The Ad Hominem Fallacy Fallacy</a></li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
